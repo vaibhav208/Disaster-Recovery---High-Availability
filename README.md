@@ -59,11 +59,22 @@ az backup vault create \
   --name MyRecoveryVault \
   --resource-group MyResourceGroup \
   --location eastus
+```
 
-### 🔹 Step 2: Create a Recovery Services Vault
+### 🔹 Step 2: Enable VM Backup
 ```bash
-az backup vault create \
-  --name MyRecoveryVault \
+az backup protection enable-for-vm \
+  --vault-name MyRecoveryVault \
   --resource-group MyResourceGroup \
-  --location eastus
+  --vm MyVM \
+  --policy-name DefaultPolicy
 
+```
+### 🔹 Step 3: Trigger an On-Demand Backup
+```bash
+az backup protection backup-now \
+  --resource-group MyResourceGroup \
+  --vault-name MyRecoveryVault \
+  --container-name MyVM \
+  --item-name MyVM \
+  --retain-until 2025-04-30
