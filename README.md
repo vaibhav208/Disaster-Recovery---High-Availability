@@ -60,3 +60,10 @@ az backup vault create \
   --resource-group MyResourceGroup \
   --location eastus
 
+### 🔹 Step 2: Create a Recovery Services Vault
+```bash
+az backup vault create \
+  --name MyRecoveryVault \
+  --resource-group MyResourceGroup \
+  --location eastus
+
